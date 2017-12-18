@@ -12,11 +12,14 @@ export default Component.extend({
     let imageSizes = get(this, 'images').map(image => {
       return getProperties(image, 'width', 'height');
     });
-    return justifiedLayout(imageSizes).boxes.map((box, index) => {
-      return {
-        image: images.objectAt(index),
-        box,
-      };
-    });
+
+    return justifiedLayout(imageSizes, get(this, 'options')).boxes.map(
+      (box, index) => {
+        return {
+          image: images.objectAt(index),
+          box,
+        };
+      }
+    );
   }),
 });
