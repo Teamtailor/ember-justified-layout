@@ -13,7 +13,7 @@ export default Component.extend({
     return `height: ${get(this, 'height')}px;`;
   }),
 
-  justifiedImages: computed('images.[]', function() {
+  justifiedImages: computed('images.[]', 'options', function() {
     let images = get(this, 'images');
     let imageSizes = get(this, 'images').map(image => {
       return getProperties(image, 'width', 'height');
