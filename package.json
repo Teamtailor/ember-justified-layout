@@ -1,11 +1,23 @@
 {
   "name": "ember-justified-layout",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Wrapper for Flickr's justified layout",
-  "keywords": ["ember-addon"],
+  "keywords": [
+    "ember-addon"
+  ],
   "license": "MIT",
-  "author": { "name": "Teamtailor", "url": "https://www.teamtailor.com" },
-  "contributors": [{ "name": "Jonas Brusman" }, { "name": "Emil Löfquist" }],
+  "author": {
+    "name": "Teamtailor",
+    "url": "https://www.teamtailor.com"
+  },
+  "contributors": [
+    {
+      "name": "Jonas Brusman"
+    },
+    {
+      "name": "Emil Löfquist"
+    }
+  ],
   "directories": {
     "doc": "doc",
     "test": "tests"
