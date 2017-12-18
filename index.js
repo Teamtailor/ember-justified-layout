@@ -56,8 +56,4 @@ module.exports = {
 
     return mergeTrees(trees);
   },
-
-  isDevelopingAddon() {
-    return true;
-  },
 };
