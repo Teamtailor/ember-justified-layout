@@ -4,13 +4,14 @@ import justifiedLayout from 'justified-layout';
 import { computed } from '@ember/object';
 import { get, set, getProperties } from '@ember/object';
 import { schedule } from '@ember/runloop';
+import { htmlSafe } from '@ember/string';
 
 export default Component.extend({
   layout,
   attributeBindings: ['style'],
 
   style: computed('height', function() {
-    return `height: ${get(this, 'height')}px;`;
+    return htmlSafe(`height: ${get(this, 'height')}px;`);
   }),
 
   justifiedImages: computed('images.[]', 'options', function() {
