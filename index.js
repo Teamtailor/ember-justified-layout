@@ -1,4 +1,6 @@
 /* eslint-env node */
+/* eslint-disable node/no-extraneous-require */
+
 'use strict';
 const Funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
