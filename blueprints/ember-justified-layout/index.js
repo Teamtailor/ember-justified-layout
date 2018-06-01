@@ -14,7 +14,7 @@ module.exports = {
     // to us
   },
 
-  afterInstall: function(options) {
+  afterInstall: function() {
     return this.addPackageToProject('justified-layout', '^2.1.1');
   },
 };
