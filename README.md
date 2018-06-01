@@ -1,4 +1,4 @@
-ember-justified-layout
+ember-justified-layout [![Build Status](https://travis-ci.com/Teamtailor/ember-justified-layout.svg?branch=master)](https://travis-ci.com/Teamtailor/ember-justified-layout)
 ==============================================================================
 
 [Short description of the addon.]
