@@ -69,5 +69,9 @@
   "bugs": {
     "url": "https://github.com/Teamtailor/ember-justified-layout/issues"
   },
-  "homepage": "https://github.com/Teamtailor/ember-justified-layout#readme"
+  "homepage": "https://github.com/Teamtailor/ember-justified-layout#readme",
+  "toolchain": {
+    "node": "8.16.0",
+    "yarn": "1.16.0"
+  }
 }
