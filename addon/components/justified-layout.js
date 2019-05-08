@@ -23,7 +23,7 @@ export default Component.extend({
     let calcuations = justifiedLayout(imageSizes, get(this, 'options'));
 
     schedule('afterRender', () => {
-      set(this, 'height', calcuations.containerHeight);
+      set(this, 'height', calcuations.containerHeight); // eslint-disable-line ember/no-side-effects
     });
 
     return calcuations.boxes.map((box, index) => {
