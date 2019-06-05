@@ -5,22 +5,73 @@ import { computed } from '@ember/object';
 import { get, set, getProperties } from '@ember/object';
 import { schedule } from '@ember/runloop';
 import { htmlSafe } from '@ember/string';
+import { isEmpty } from '@ember/utils';
+
+/**
+  Pretty cool component, right?
+  To use it, you could enter the following in your template:
+  ```handlebars
+  {{#justified-layout
+    images=arrayOfImages
+    options=(hash targetRowHeight=215 containerWidth=500 containerPadding=0 boxSpacing=5)
+    as |image dimensions|
+  }}
+    <img src={{image.src}} style={{ddd}}>
+  {{/justified-layout}}
+  ```
+  @class YUIDocComponent
+  @public
+*/
 
 export default Component.extend({
   layout,
   attributeBindings: ['style'],
 
+  containerWidth: 1060,
+  containerPadding: 10,
+  targetRowHeight: 320,
+  boxSpacing: 10,
+  targetRowHeightTolerance: 0.25,
+  maxNumRows: Number.POSITIVE_INFINITY,
+  forceAspectRatio: false,
+  showWidows: true,
+  fullWidthBreakoutRowCadence: false,
+
   style: computed('height', function() {
-    return htmlSafe(`height: ${get(this, 'height')}px;`);
+    return htmlSafe(`height: ${get(this, 'height')}px;position:relative;`);
   }),
 
-  justifiedImages: computed('images.[]', 'options', function() {
+  didInsertElement() {
+    this._super(...arguments);
+    set(this, 'containerWidth', this.element.parentElement.clientWidth);
+  },
+
+  justifiedImages: computed('images.[]', 'containerWidth', function() {
     let images = get(this, 'images');
+
+    if (isEmpty(images)) {
+      return [];
+    }
+
     let imageSizes = get(this, 'images').map(image => {
       return getProperties(image, 'width', 'height');
     });
 
-    let calcuations = justifiedLayout(imageSizes, get(this, 'options'));
+    let options = getProperties(
+      this,
+      'containerWidth',
+      'containerPadding',
+      'targetRowHeight',
+      'boxSpacing',
+      'targetRowHeightTolerance',
+      'maxNumRows',
+      'forceAspectRatio',
+      'showWidows',
+      'fullWidthBreakoutRowCadence'
+    );
+    console.log('hejhej options', options);
+
+    let calcuations = justifiedLayout(imageSizes, options);
 
     schedule('afterRender', () => {
       set(this, 'height', calcuations.containerHeight); // eslint-disable-line ember/no-side-effects
