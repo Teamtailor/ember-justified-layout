@@ -27,8 +27,8 @@ export default Component.extend({
   layout,
   attributeBindings: ['style'],
 
-  containerWidth: 1060,
-  containerPadding: 10,
+  containerWidth: null,
+  containerPadding: 0,
   targetRowHeight: 320,
   boxSpacing: 10,
   targetRowHeightTolerance: 0.25,
@@ -43,7 +43,9 @@ export default Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    set(this, 'containerWidth', this.element.parentElement.clientWidth);
+    if (this.containerWidth === null) {
+      set(this, 'containerWidth', this.element.parentElement.clientWidth);
+    }
   },
 
   justifiedImages: computed('images.[]', 'containerWidth', function() {
